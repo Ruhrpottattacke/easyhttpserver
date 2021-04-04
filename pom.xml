@@ -13,25 +13,6 @@
         <maven.compiler.target>11</maven.compiler.target>
     </properties>
 
-    <profiles>
-        <profile>
-            <id>github</id>
-            <activation>
-                <property>
-                    <name>useGitHubPackages</name>
-                    <value>true</value>
-                </property>
-            </activation>
-            <distributionManagement>
-                <repository>
-                    <id>github</id>
-                    <name>GitHub Packages</name>
-                    <url>https://maven.pkg.github.com/ruhrpottattacke/*</url>
-                </repository>
-            </distributionManagement>
-        </profile>
-    </profiles>
-
     <dependencies>
         <!-- https://mvnrepository.com/artifact/junit/junit -->
         <dependency>
