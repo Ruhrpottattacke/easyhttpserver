@@ -1,2 +1,2 @@
 # EasyHttpServer
-Simple and leightweight http server written in Java
+Simple and lightweight http server written in Java
