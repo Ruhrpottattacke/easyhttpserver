@@ -35,7 +35,7 @@ public class HttpServerTest {
         StringBuilder query = new StringBuilder();
         if(!parameters.isEmpty()) {
             for (String parameter : parameters.keySet()) {
-                query.append(parameter).append("=").append(parameters.get(parameter)+"&");
+                query.append(parameter).append("=").append(parameters.get(parameter)).append("&");
             }
             query.deleteCharAt(query.length()-1);
         }
