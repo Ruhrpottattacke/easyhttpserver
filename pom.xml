@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ruhrpottattacke.easyhttpserver</groupId>
-    <artifactId>EasyHttpServer-lib</artifactId>
-    <version>1.4</version>
+    <artifactId>easyhttpserver-easyhttpserver</artifactId>
+    <version>1.5</version>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
