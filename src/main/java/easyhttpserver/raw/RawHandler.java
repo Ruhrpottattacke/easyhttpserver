@@ -16,6 +16,7 @@ public class RawHandler implements com.sun.net.httpserver.HttpHandler {
     public void handle(HttpExchange exchange) throws IOException {
         if(!exchange.getRequestMethod().equals("GET")) {
             exchange.sendResponseHeaders(405,-1);
+            exchange.close();
             return;
         }
         easyhttpserver.HttpExchange easyExchange = new easyhttpserver.HttpExchange(exchange);
