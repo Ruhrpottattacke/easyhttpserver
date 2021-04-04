@@ -27,7 +27,6 @@ public class HttpServerTest {
         map.put("ping", "hallo");
         map.put("pong", "test");
         String response = sendRequest("/test",map);
-        System.out.println(response);
         Assert.assertEquals("Test: hallo, test", response);
     }
 
