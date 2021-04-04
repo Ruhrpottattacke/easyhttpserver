@@ -12,6 +12,13 @@ public class HttpExchange {
         parameters = getParameters(exchange.getRequestURI());
     }
 
+    private static String[] decodeParameter(String s) {
+        String[] array = new String[2];
+        array[0] = s.split("=")[0];
+        array[1] = s.split("=")[1];
+        return array;
+    }
+    
     private static Map<String, String> getParameters(URI uri) {
         Map<String, String> map = new HashMap<>();
         if(!uri.getQuery().equalsIgnoreCase("null")) {
@@ -26,13 +33,6 @@ public class HttpExchange {
             }
         }
         return map;
-    }
-
-    private static String[] decodeParameter(String s) {
-        String[] array = new String[2];
-        array[0] = s.split("=")[0];
-        array[1] = s.split("=")[1];
-        return array;
     }
 
     public Map<String, String> getParameters() {
