@@ -1,3 +1,5 @@
+name: Checkstyle
+
 on:
   push:
     branches: [main]
@@ -13,3 +15,5 @@ jobs:
       uses: actions/checkout@v2
     - name: Run check style
       uses: nikitasavinov/checkstyle-action@master
+      with:
+        reporter: 'github-pr-check'
