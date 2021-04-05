@@ -25,7 +25,7 @@ public class HttpServer {
     }
 
     public void stop(int delay) {
-        if(isRunning()) {
+        if (isRunning()) {
             server.stop(delay);
             running = false;
         }
