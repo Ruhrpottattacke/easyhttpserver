@@ -15,7 +15,7 @@ public class HttpServerTest {
     public void testSimpleRestEndpoint() {
         HttpServer server = new HttpServer(5555, 2, 0);
         server.createContext("/test", exchange -> {
-            exchange.setResponse("Test: "+exchange.getParameters().get("ping")+", "+exchange.getParameters().get("pong"));
+            exchange.setResponse("Test: " + exchange.getParameters().get("ping") + ", " + exchange.getParameters().get("pong"));
         });
         server.start();
         try {
@@ -26,7 +26,7 @@ public class HttpServerTest {
         Map<String, String> map = new HashMap<>();
         map.put("ping", "hallo");
         map.put("pong", "test");
-        String response = sendRequest("/test",map);
+        String response = sendRequest("/test", map);
         Assert.assertEquals("Test: hallo, test", response);
         map.remove("pong");
         response = sendRequest("/test", map);
@@ -36,14 +36,14 @@ public class HttpServerTest {
     private static String sendRequest(String path, Map<String, String> parameters) {
         String response = "";
         StringBuilder query = new StringBuilder();
-        if(!parameters.isEmpty()) {
+        if (!parameters.isEmpty()) {
             for (String parameter : parameters.keySet()) {
                 query.append(parameter).append("=").append(parameters.get(parameter)).append("&");
             }
-            query.deleteCharAt(query.length()-1);
+            query.deleteCharAt(query.length() - 1);
         }
         try {
-            URL url = new URL("http://localhost:5555/test?"+query.toString());
+            URL url = new URL("http://localhost:5555/test?" + query.toString());
             URLConnection urlConnection = url.openConnection();
             HttpURLConnection connection = (HttpURLConnection) urlConnection;
             connection.setRequestMethod("GET");
