@@ -14,14 +14,14 @@ public class RawHandler implements com.sun.net.httpserver.HttpHandler {
 
     @Override
     public void handle(HttpExchange exchange) throws IOException {
-        if(!exchange.getRequestMethod().equals("GET")) {
-            exchange.sendResponseHeaders(405,-1);
+        if (!exchange.getRequestMethod().equals("GET")) {
+            exchange.sendResponseHeaders(405, -1);
             exchange.close();
             return;
         }
         easyhttpserver.HttpExchange easyExchange = new easyhttpserver.HttpExchange(exchange);
         handler.handle(easyExchange);
-        if(!easyExchange.getResponse().isEmpty()) {
+        if (!easyExchange.getResponse().isEmpty()) {
             exchange.sendResponseHeaders(200, easyExchange.getResponse().length());
             exchange.getResponseBody().write(easyExchange.getResponse().getBytes());
             exchange.close();
