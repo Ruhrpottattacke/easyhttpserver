@@ -15,7 +15,8 @@ public class HttpServerTest {
     public void testSimpleRestEndpoint() {
         HttpServer server = new HttpServer(5555, 2, 0);
         server.createContext("/test", exchange -> {
-            exchange.setResponse("Test: " + exchange.getParameters().get("ping") + ", " + exchange.getParameters().get("pong"));
+            exchange.setResponse("Test: " + exchange.getParameters().get("ping")
+                    + ", " + exchange.getParameters().get("pong"));
         });
         server.start();
         try {
