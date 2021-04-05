@@ -28,6 +28,9 @@ public class HttpServerTest {
         map.put("pong", "test");
         String response = sendRequest("/test",map);
         Assert.assertEquals("Test: hallo, test", response);
+        map.remove("pong");
+        response = sendRequest("/test", map);
+        Assert.assertEquals("Test: hallo, null", response);
     }
 
     private static String sendRequest(String path, Map<String, String> parameters) {
