@@ -43,7 +43,7 @@ public class HttpServerTest {
             query.deleteCharAt(query.length()-1);
         }
         try {
-            URL url = new URL("http://localhost:5555/test?"+query.toString());
+            URL url = new URL("http://localhost:5555"+path+"?"+query.toString());
             URLConnection urlConnection = url.openConnection();
             HttpURLConnection connection = (HttpURLConnection) urlConnection;
             connection.setRequestMethod("GET");
