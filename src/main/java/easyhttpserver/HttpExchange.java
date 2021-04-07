@@ -3,13 +3,18 @@ package easyhttpserver;
 import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 public class HttpExchange {
+    private final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+
     private String response;
     private final Map<String, String> parameters;
 
     public HttpExchange(com.sun.net.httpserver.HttpExchange exchange) {
+        logger.finer("created instance of HttpExchange class with exchange "+exchange.toString());
         parameters = getParameters(exchange.getRequestURI());
+        logger.finest("parameters = "+parameters.toString());
     }
 
     private static String[] decodeParameter(String s) {
@@ -36,6 +41,8 @@ public class HttpExchange {
     }
 
     public Map<String, String> getParameters() {
+        logger.finest("method getParameters() called in HttpExchange");
+        logger.finest("parameters = "+parameters.toString());
         return parameters;
     }
 
@@ -44,6 +51,8 @@ public class HttpExchange {
     }
 
     public void setResponse(String response) {
+        logger.finest("method setResponse() called in HttpExchange");
         this.response = response;
+        logger.fine("set response to "+response);
     }
 }
