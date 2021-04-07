@@ -38,13 +38,20 @@ public class HttpServer {
     }
 
     public void stop(int delay) {
+        logger.info("stopping server with delay "+delay);
         if(isRunning()) {
+            logger.finest("server is running");
             server.stop(delay);
+            logger.finest("called stop method with delay "+delay);
             running = false;
+            logger.finest("running = "+false);
+        }else {
+            logger.warning("server is not running");
         }
     }
 
     public void stop() {
+        logger.finest("called stop method without delay");
         stop(0);
     }
 
