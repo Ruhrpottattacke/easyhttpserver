@@ -17,7 +17,7 @@ public class HttpServer {
         logger.fine("created instance of HttpServer class");
         logger.finest("port = "+port+", threads = "+threads+", backlog = "+backlog);
         try {
-            logger.info("created http server on port "+port+"");
+            logger.info("creating http server on port "+port+"");
             server = com.sun.net.httpserver.HttpServer.create(new InetSocketAddress(port), backlog);
             logger.fine("created server, creating new thread pool with "+threads+" threads");
             server.setExecutor(Executors.newWorkStealingPool(threads));
