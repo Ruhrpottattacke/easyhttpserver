@@ -23,16 +23,16 @@ public class HttpExchange {
         array[1] = s.split("=")[1];
         return array;
     }
-    
+
     private static Map<String, String> getParameters(URI uri) {
         Map<String, String> map = new HashMap<>();
-        if(!uri.getQuery().equalsIgnoreCase("null")) {
-            if(uri.getQuery().contains("&")) {
-                for(String param : uri.getQuery().split("&")) {
+        if (!uri.getQuery().equalsIgnoreCase("null")) {
+            if (uri.getQuery().contains("&")) {
+                for (String param : uri.getQuery().split("&")) {
                     String[] array = decodeParameter(param);
                     map.put(array[0], array[1]);
                 }
-            }else {
+            } else {
                 String[] array = decodeParameter(uri.getQuery());
                 map.put(array[0], array[1]);
             }
