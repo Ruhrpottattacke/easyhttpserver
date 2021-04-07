@@ -18,13 +18,13 @@ public class RawHandler implements com.sun.net.httpserver.HttpHandler {
 
     @Override
     public void handle(HttpExchange exchange) throws IOException {
-        logger.info("received request "+exchange.getRequestURI().toString()+" from "+exchange.getRemoteAddress().getHostName());
+        logger.info("received request '"+exchange.getRequestURI().toString()+"' from "+exchange.getRemoteAddress().getHostName());
         if(!exchange.getRequestMethod().equals("GET")) {
             logger.finer("method of request is not get");
             exchange.sendResponseHeaders(405,-1);
             logger.finest("sent response header with response code 405 and response length -1");
             exchange.close();
-            logger.warning("closed request from"+exchange.getRemoteAddress().getHostName()+" because of wrong method - method was: "+exchange.getRequestMethod());
+            logger.warning("closed request from "+exchange.getRemoteAddress().getHostName()+" because of wrong method - method was: "+exchange.getRequestMethod());
             return;
         }
         logger.finer("correct request method, creating HttpExchange");
@@ -39,7 +39,7 @@ public class RawHandler implements com.sun.net.httpserver.HttpHandler {
             exchange.getResponseBody().write(easyExchange.getResponse().getBytes());
             logger.finest("written bytes ");
             exchange.close();
-            logger.info("sent response "+easyExchange.getResponse()+" to request from "+exchange.getRemoteAddress().getHostName());
+            logger.info("sent response '"+easyExchange.getResponse()+"' to request from "+exchange.getRemoteAddress().getHostName());
         }else {
             logger.warning("response is empty");
             exchange.sendResponseHeaders(500, -1);
