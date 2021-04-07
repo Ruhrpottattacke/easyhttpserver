@@ -17,21 +17,24 @@ public class HttpServer {
         logger.fine("created instance of HttpServer class");
         logger.finest("port = "+port+", threads = "+threads+", backlog = "+backlog);
         try {
-            logger.info("starting http server on port "+port+"");
+            logger.info("created http server on port "+port+"");
             server = com.sun.net.httpserver.HttpServer.create(new InetSocketAddress(port), backlog);
-            logger.fine("started server, creating new thread pool with "+threads+" threads");
+            logger.fine("created server, creating new thread pool with "+threads+" threads");
             server.setExecutor(Executors.newWorkStealingPool(threads));
             logger.fine("created thread pool");
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            logger.info("started http server on port "+port+" with backlog "+backlog+" and "+threads+" working threads");
+            logger.info("created http server on port "+port+" with backlog "+backlog+" and "+threads+" working threads");
         }
     }
 
     public void start() {
+        logger.info("starting http server on port "+server.getAddress().getPort());
         server.start();
+        logger.info("started http server");
         running = true;
+        logger.finer("running = "+true);
     }
 
     public void stop(int delay) {
