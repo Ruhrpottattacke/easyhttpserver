@@ -56,14 +56,20 @@ public class HttpServer {
     }
 
     public void createContext(String path, HttpHandler handler) {
+        logger.fine("creating context with path = "+path+" and handler = "+handler.getClass().getName());
         server.createContext(path, new RawHandler(handler));
+        logger.info("created context with path = "+path+" and handler = "+handler.getClass().getName());
     }
 
     public void removeContext(String path) {
+        logger.fine("removing context on path = "+path);
         server.removeContext(path);
+        logger.info("removed context on path = "+path);
     }
 
     public boolean isRunning() {
+        logger.finest("method isRunning() called in HttpServer");
+        logger.finest("server on port "+server.getAddress().getPort()+" is running = "+running);
         return running;
     }
 }
